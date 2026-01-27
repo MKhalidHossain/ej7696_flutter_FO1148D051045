@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 enum PlanTier { starter, professional }
 
@@ -75,7 +76,21 @@ class HomeDashboard extends StatelessWidget {
                 course: course,
                 isUnlocked: isUnlocked,
                 showPriceUnlock: planTier == PlanTier.professional,
-                onTap: () {},
+                onTap: () {
+                  if (planTier == PlanTier.starter && !isUnlocked) {
+                    context.push(
+                      '/quiz-settings',
+                      extra: {'courseTitle': course.title},
+                    );
+                    return;
+                  }
+                  if (isUnlocked) {
+                    context.push(
+                      '/quiz-settings',
+                      extra: {'courseTitle': course.title},
+                    );
+                  }
+                },
               ),
             );
           }),
