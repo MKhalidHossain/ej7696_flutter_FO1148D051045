@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
     this.planTier = PlanTier.starter,
-    this.unlockedCourseIds = const {'api510'},
+    this.unlockedCourseIds = const {},
   });
 
   @override
